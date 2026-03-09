@@ -1,0 +1,114 @@
+/* ===== SPORTS SECTION — Premium Cards with Sport Icons ===== */
+/* ===== SPORTS SECTION — Premium SaaS Cards with Sport Icons ===== */
+.sports-section {
+  padding: 6rem 1.5rem 8rem;
+  text-align: center;
+  background: var(--clr-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.sports-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Card ── */
+.sport-card {
+  background: var(--clr-surface);
+  padding: 2.5rem 2rem;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--t-base);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.sport-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--clr-accent-light);
+}
+
+.sport-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--r-md);
+  background: rgba(255, 107, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  transition: all var(--t-base);
+}
+
+.sport-card:hover .sport-icon {
+  background: var(--grad-accent);
+  color: white;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.sport-card h3 {
+  margin: 0 0 0.75rem;
+  color: var(--clr-text-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.sport-card p {
+  font-size: 0.95rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.sport-card-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  background: var(--clr-primary);
+  color: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-md);
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--t-base);
+}
+
+.sport-card:hover .sport-card-button {
+  background: var(--clr-accent);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .sports-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .sports-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}

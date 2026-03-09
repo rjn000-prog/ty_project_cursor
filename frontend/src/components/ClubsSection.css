@@ -1,0 +1,97 @@
+/* ===== CLUBS SECTION — Premium SaaS Cards (Consistent with Sports) ===== */
+.clubs-section {
+  padding: 6rem 1.5rem 8rem;
+  text-align: center;
+  background: var(--clr-surface-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Card ── */
+.clubs-section .club-card {
+  background: var(--clr-surface);
+  padding: 2.5rem 2rem;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--clr-border);
+  transition: all var(--t-base);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.clubs-section .club-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--clr-accent-light);
+}
+
+.club-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-md);
+  background: rgba(0, 208, 132, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 208, 132, 0.2);
+  transition: all var(--t-base);
+}
+
+.clubs-section .club-card:hover .club-card-icon {
+  background: linear-gradient(135deg, var(--clr-success) 0%, #00f2a1 100%);
+  color: white;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.clubs-section .club-card h3 {
+  color: var(--clr-text-head);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.clubs-section .club-card p {
+  font-size: 0.95rem;
+  color: var(--clr-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.clubs-section .club-card .clubs-section-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--clr-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--t-base);
+}
+
+.clubs-section .club-card:hover .clubs-section-view-btn {
+  background: var(--clr-accent);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .clubs-section {
+    padding: 4rem 1.5rem;
+  }
+}

@@ -1,0 +1,157 @@
+/* ===== SIDEBAR — Premium Dark Sports Theme ===== */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--grad-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: width var(--t-base);
+  box-shadow: var(--shadow-xl);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar--collapsed {
+  width: 80px;
+}
+
+/* ── Header ── */
+.sidebar-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-logo-img {
+  height: 44px;
+  width: auto;
+  transition: transform var(--t-base);
+}
+
+.sidebar--collapsed .sidebar-logo-img {
+  display: none;
+}
+
+.sidebar--collapsed .sidebar-logo::after {
+  content: 'SS';
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--clr-accent-light);
+}
+
+/* ── Toggle ── */
+.sidebar-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--clr-accent);
+}
+
+/* ── Nav ── */
+.sidebar-nav {
+  flex: 1;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+/* ── Links ── */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--r-md);
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--t-base);
+  border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.sidebar-link--active {
+  background: rgba(255, 107, 0, 0.12);
+  color: var(--clr-accent-light);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.sidebar-link--admin {
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-link--admin:hover {
+  background: rgba(255, 107, 0, 0.08);
+  border: 1px solid var(--clr-accent);
+  color: white;
+}
+
+.sidebar-link-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar--collapsed .sidebar-link {
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ── Section divider ── */
+.sidebar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 1.5rem 1rem;
+}
+
+/* ── Footer ── */
+.sidebar-footer {
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar--mobile-open {
+    transform: translateX(0);
+    width: 280px;
+  }
+}

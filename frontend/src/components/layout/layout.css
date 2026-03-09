@@ -1,0 +1,17 @@
+.app-with-sidebar {
+  display: flex;
+  min-height: 100vh;
+  background: var(--clr-bg);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  transition: margin-left 0.25s ease;
+}
+
+/* When sidebar is collapsed */
+.sidebar--collapsed~.main-content {
+  margin-left: 72px;
+}

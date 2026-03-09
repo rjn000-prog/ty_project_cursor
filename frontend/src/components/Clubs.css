@@ -1,0 +1,17 @@
+.clubs-section {
+  padding: 3rem;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.club-card {
+  background: var(--clr-surface);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
+}

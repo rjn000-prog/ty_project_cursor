@@ -1,0 +1,52 @@
+.events-matches-section {
+  padding: 60px 40px;
+  background: #f4f6f8;
+  text-align: center;
+}
+
+.events-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.events-box,
+.matches-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.events-box h3,
+.matches-box h3 {
+  color: #0b3c5d;
+  margin-bottom: 20px;
+}
+
+.item-card {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-card h4 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.item-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.view-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #f9a826;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}

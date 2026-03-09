@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Sports Sphere Backend - TY Project",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/app.js",
+    "start": "node src/app.js",
+    "prisma:generate": "npx prisma generate",
+    "prisma:push": "npx prisma db push",
+    "seed:superadmin": "node src/scripts/seedSuperAdmin.js"
+  },
+  "keywords": [
+    "sports",
+    "college",
+    "events",
+    "prisma",
+    "express",
+    "ty-project"
+  ],
+  "author": "TY Project Team",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.19.2",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^7.0.6",
+    "pdfkit": "^0.17.2",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "prisma": "^6.19.2"
+  }
+}

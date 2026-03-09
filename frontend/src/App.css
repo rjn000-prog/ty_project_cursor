@@ -1,0 +1,6 @@
+/* App.css — minimal reset overrides for the app wrapper */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+}

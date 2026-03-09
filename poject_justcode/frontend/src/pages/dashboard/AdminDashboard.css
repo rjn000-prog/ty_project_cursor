@@ -1,0 +1,121 @@
+.admin-dashboard {
+  padding: 40px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* Header */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.admin-header h1 {
+  color: #0b3c5d;
+}
+
+.admin-header p {
+  color: #555;
+}
+
+.admin-logout {
+  background: #c9302c;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin-logout:hover {
+  background: #a82420;
+}
+
+/* Stats */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.admin-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.admin-card h3 {
+  color: #0b3c5d;
+  margin-bottom: 10px;
+}
+
+.admin-card p {
+  font-size: 32px;
+  font-weight: bold;
+  color: #f9a826;
+}
+
+/* Actions */
+.admin-actions {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.admin-actions h2 {
+  margin-bottom: 20px;
+  color: #0b3c5d;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.action-grid button {
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #0b3c5d;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-grid button:hover {
+  background: #072b43;
+}
+
+/* Activity */
+.admin-activity {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.admin-activity h2 {
+  margin-bottom: 15px;
+  color: #0b3c5d;
+}
+
+.admin-activity ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-activity li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #444;
+}

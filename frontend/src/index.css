@@ -1,0 +1,345 @@
+/* =========================================
+   GLOBAL DESIGN SYSTEM — PCCAS Sports Portal
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  /* Brand Colors */
+  --clr-primary: #0A1F44;
+  /* Deep Sports Blue */
+  --clr-primary-dark: #06132b;
+  --clr-primary-light: #16315d;
+  --clr-accent: #FF6B00;
+  /* Energetic Orange */
+  --clr-accent-dark: #e66000;
+  --clr-accent-light: #ff8533;
+  --clr-success: #00D084;
+  --clr-danger: #DC3545;
+
+  /* Neutrals (Dark Mode Transition) */
+  --clr-bg: #0B1120;
+  /* Dark Blue-Black */
+  --clr-bg-alt: #0F172A;
+  --clr-surface: #111827;
+  /* Dark Surface */
+  --clr-surface-2: #1e293b;
+  --clr-border: rgba(255, 255, 255, 0.1);
+  --clr-border-focus: #FF6B00;
+
+  /* Text */
+  --clr-text-head: #F8FAFC;
+  --clr-text-body: #CBD5E1;
+  --clr-text-muted: #94A3B8;
+  --clr-text-faint: #64748b;
+
+  /* Dark bg palette (remains dark) */
+  --clr-dark: #0A1F44;
+  --clr-dark-2: #06132b;
+  --clr-dark-3: #16315d;
+
+  /* Radii */
+  --r-sm: 0.5rem;
+  --r-md: 0.875rem;
+  --r-lg: 1.5rem;
+  --r-xl: 2rem;
+  --r-pill: 9999px;
+
+  /* Shadows - Modern SaaS style */
+  --shadow-xs: 0 1px 2px rgba(10, 31, 68, 0.05);
+  --shadow-sm: 0 4px 6px -1px rgba(10, 31, 68, 0.1), 0 2px 4px -2px rgba(10, 31, 68, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(10, 31, 68, 0.1), 0 4px 6px -2px rgba(10, 31, 68, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(10, 31, 68, 0.12), 0 8px 10px -6px rgba(10, 31, 68, 0.1);
+  --shadow-xl: 0 25px 50px -12px rgba(10, 31, 68, 0.25);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #0A1F44 0%, #16315d 100%);
+  --grad-accent: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%);
+  --grad-banner: linear-gradient(109.6deg, rgba(10, 31, 68, 1) 11.2%, rgba(22, 49, 93, 1) 91.1%);
+
+  /* Transitions */
+  --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --t-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Resets ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--clr-bg);
+  color: var(--clr-text-body);
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Typography defaults ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--clr-text-head);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+p {
+  color: var(--clr-text-body);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+a:hover {
+  color: var(--clr-primary-dark);
+}
+
+/* ── Shared Section Utilities ── */
+.section-label {
+  display: table;
+  margin: 0 auto 1.5rem;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--clr-accent);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--clr-text-head);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  color: var(--clr-text-muted);
+  max-width: 44rem;
+  margin: 0 auto 3.5rem;
+  line-height: 1.65;
+}
+
+/* ── Button Base ── */
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--r-md);
+  padding: 0.65rem 1.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--t-base);
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--clr-primary-light);
+  outline-offset: 3px;
+}
+
+/* ── Global view-all ── */
+.view-all-container {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-primary-dark) 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--t-base);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.view-all-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(99, 102, 241, .5);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-border);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-text-faint);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(99, 102, 241, .25);
+  color: var(--clr-primary-dark);
+}
+
+/* ── Premium Micro-Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-scale {
+  animation: fadeInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hover-lift {
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.admin-modal {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-xl);
+  width: 90%;
+  max-width: 600px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}

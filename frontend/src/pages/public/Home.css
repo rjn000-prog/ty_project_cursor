@@ -1,0 +1,78 @@
+.home-page {
+  scroll-behavior: smooth;
+  background: var(--clr-bg) !important;
+  min-height: 100vh;
+}
+
+/* Scroll margin for offset nav */
+#hero,
+#sports,
+#clubs,
+#events,
+#news,
+#gallery,
+.home-clubs-section,
+#clubs-all {
+  scroll-margin-top: 20px;
+}
+
+/* Override inner section backgrounds to continue gradients smoothly */
+.home-page #sports {
+  background: transparent;
+}
+
+.home-page #clubs {
+  background: transparent;
+}
+
+.home-page #events {
+  background: transparent;
+}
+
+.home-page #news {
+  background: transparent;
+}
+
+.home-page #gallery {
+  background: transparent;
+}
+
+/* Section title with underline */
+.home-page .section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--clr-text-head);
+  margin: 0 auto 0.75rem;
+  letter-spacing: -0.03em;
+  text-align: center;
+  display: block;
+}
+
+.home-page .section-title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #0ea5e9);
+  border-radius: 2px;
+  margin: 0.85rem auto 0;
+}
+
+/* Dark section: title & subtitle override */
+.home-page #events .section-title {
+  color: #fff;
+}
+
+.home-page #events .section-title::after {
+  background: linear-gradient(90deg, #6366f1, #a5b4fc);
+}
+
+.home-page .section-subtitle {
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  color: #64748b;
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 3.5rem;
+  line-height: 1.7;
+}

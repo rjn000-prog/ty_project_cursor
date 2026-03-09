@@ -1,0 +1,241 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique(map: "Admin_email_key")
+  password String
+  role     String
+  clubId   Int?
+  club     club?  @relation(fields: [clubId], references: [id])
+
+  @@index([clubId], map: "admin_clubId_fkey")
+}
+
+model club {
+  id             Int           @id @default(autoincrement())
+  name           String
+  type           String
+  description    String
+  presidentName  String
+  contactEmail   String
+  capacity       Int
+  location       String
+  lat            Float?
+  lng            Float?
+  joinFormSchema String?       @db.LongText
+  admins         admin[]
+  clubmember     clubmember[]
+  event          event[]
+  galleryitem    galleryitem[]
+}
+
+model clubmember {
+  id        Int     @id @default(autoincrement())
+  role      String  @default("member")
+  studentId Int
+  clubId    Int
+  extraData String? @db.LongText
+  club      club    @relation(fields: [clubId], references: [id], map: "ClubMember_clubId_fkey")
+  student   student @relation(fields: [studentId], references: [id], map: "ClubMember_studentId_fkey")
+
+  @@unique([studentId, clubId], map: "ClubMember_studentId_clubId_key")
+  @@index([clubId], map: "ClubMember_clubId_fkey")
+}
+
+model department {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique(map: "Department_name_key")
+  student student[]
+  team    team[]
+}
+
+model event {
+  id                     Int            @id @default(autoincrement())
+  name                   String
+  type                   String
+  description            String
+  date                   DateTime
+  startTime              String
+  endTime                String
+  maxParticipants        Int
+  clubId                 Int
+  registrationFormSchema String?        @db.LongText
+  club                   club           @relation(fields: [clubId], references: [id], map: "Event_clubId_fkey")
+  feedback               feedback[]
+  organizer              organizer[]
+  registration           registration[]
+
+  @@index([clubId], map: "Event_clubId_fkey")
+}
+
+model feedback {
+  id        Int
+  rating    Int
+  comments  String
+  studentId Int
+  eventId   Int
+  event     event   @relation(fields: [eventId], references: [id], map: "Feedback_eventId_fkey")
+  student   student @relation(fields: [studentId], references: [id], map: "Feedback_studentId_fkey")
+
+  @@id([studentId, eventId])
+  @@index([eventId], map: "Feedback_eventId_fkey")
+}
+
+model match {
+  id           Int        @id @default(autoincrement())
+  date         DateTime
+  venue        String
+  scoreA       Int
+  scoreB       Int
+  teamAId      Int
+  teamBId      Int
+  tournamentId Int
+  tournament   tournament @relation(fields: [tournamentId], references: [id], map: "Match_tournamentId_fkey")
+
+  @@index([tournamentId], map: "Match_tournamentId_fkey")
+}
+
+model organizer {
+  id         Int    @id @default(autoincrement())
+  name       String
+  email      String
+  phone      String
+  role       String
+  department String
+  eventId    Int
+  event      event  @relation(fields: [eventId], references: [id], map: "Organizer_eventId_fkey")
+
+  @@index([eventId], map: "Organizer_eventId_fkey")
+}
+
+model registration {
+  id          Int      @id @default(autoincrement())
+  status      String   @default("PENDING")
+  regDate     DateTime @default(now())
+  studentId   Int
+  eventId     Int
+  note        String?
+  extraData   String?  @db.LongText
+  certIssued  Boolean  @default(false)
+  ticketToken String?  @unique
+  attended    Boolean  @default(false)
+  event       event    @relation(fields: [eventId], references: [id], map: "Registration_eventId_fkey")
+  student     student  @relation(fields: [studentId], references: [id], map: "Registration_studentId_fkey")
+
+  @@unique([studentId, eventId], map: "Registration_studentId_eventId_key")
+  @@index([eventId], map: "Registration_eventId_fkey")
+}
+
+model sport {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @unique(map: "Sport_name_key")
+  sportsregistration sportsregistration[]
+  team               team[]
+  tournament         tournament[]
+}
+
+model sportsregistration {
+  id        Int     @id @default(autoincrement())
+  status    String
+  studentId Int
+  sportId   Int
+  sport     sport   @relation(fields: [sportId], references: [id], map: "SportsRegistration_sportId_fkey")
+  student   student @relation(fields: [studentId], references: [id], map: "SportsRegistration_studentId_fkey")
+
+  @@unique([studentId, sportId], map: "SportsRegistration_studentId_sportId_key")
+  @@index([sportId], map: "SportsRegistration_sportId_fkey")
+}
+
+model student {
+  id                 Int                  @id @default(autoincrement())
+  rollNo             String               @unique(map: "Student_rollNo_key")
+  name               String
+  email              String               @unique(map: "Student_email_key")
+  password           String
+  dob                DateTime
+  address            String
+  mobile             String
+  year               Int
+  departmentId       Int
+  showInDirectory    Boolean              @default(true)
+  clubmember         clubmember[]
+  feedback           feedback[]
+  registration       registration[]
+  sportsregistration sportsregistration[]
+  department         department           @relation(fields: [departmentId], references: [id], map: "Student_departmentId_fkey")
+  teammember         teammember[]
+
+  @@index([departmentId], map: "Student_departmentId_fkey")
+}
+
+model team {
+  id           Int          @id @default(autoincrement())
+  name         String
+  coachName    String
+  departmentId Int
+  sportId      Int
+  department   department   @relation(fields: [departmentId], references: [id], map: "Team_departmentId_fkey")
+  sport        sport        @relation(fields: [sportId], references: [id], map: "Team_sportId_fkey")
+  teammember   teammember[]
+
+  @@index([departmentId], map: "Team_departmentId_fkey")
+  @@index([sportId], map: "Team_sportId_fkey")
+}
+
+model teammember {
+  id        Int     @id @default(autoincrement())
+  position  String
+  studentId Int
+  teamId    Int
+  student   student @relation(fields: [studentId], references: [id], map: "TeamMember_studentId_fkey")
+  team      team    @relation(fields: [teamId], references: [id], map: "TeamMember_teamId_fkey")
+
+  @@unique([studentId, teamId], map: "TeamMember_studentId_teamId_key")
+  @@index([teamId], map: "TeamMember_teamId_fkey")
+}
+
+model tournament {
+  id        Int      @id @default(autoincrement())
+  name      String
+  level     String
+  startDate DateTime
+  endDate   DateTime
+  sportId   Int
+  match     match[]
+  sport     sport    @relation(fields: [sportId], references: [id], map: "Tournament_sportId_fkey")
+
+  @@index([sportId], map: "Tournament_sportId_fkey")
+}
+
+model news {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  summary     String
+  content     String
+  imageUrl    String?
+  publishedAt DateTime @default(now())
+  visible     Boolean  @default(true)
+  category    String   @default("news")
+}
+
+model galleryitem {
+  id        Int      @id @default(autoincrement())
+  title     String
+  caption   String?
+  imageUrl  String
+  clubId    Int?
+  createdAt DateTime @default(now())
+  visible   Boolean  @default(true)
+  club      club?    @relation(fields: [clubId], references: [id])
+
+  @@index([clubId], map: "galleryitem_clubId_fkey")
+}

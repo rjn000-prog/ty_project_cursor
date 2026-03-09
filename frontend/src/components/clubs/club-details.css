@@ -1,0 +1,219 @@
+/* ===== CLUB DETAILS — Premium Cinematic Theme ===== */
+.club-details-page {
+  min-height: 100vh;
+  background: var(--clr-bg);
+  padding: 2rem;
+}
+
+.club-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.club-details-nav {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.club-details-nav a {
+  color: var(--clr-primary);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.club-details-nav a:hover {
+  color: var(--clr-accent);
+}
+
+.club-details-nav span {
+  color: var(--clr-text-muted);
+}
+
+/* Card */
+.club-details-card {
+  background: var(--clr-surface);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-border);
+}
+
+.club-details-header {
+  background: var(--grad-primary);
+  color: white;
+  padding: 5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.club-details-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 107, 0, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(0, 208, 132, 0.1) 0%, transparent 40%);
+}
+
+.club-details-type {
+  display: inline-flex;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--clr-accent-light);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--r-pill);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 2;
+}
+
+.club-details-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.club-details-body {
+  padding: 4rem;
+}
+
+.club-details-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--clr-text-muted);
+  margin-bottom: 3.5rem;
+  max-width: 800px;
+}
+
+.club-details-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.club-details-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: var(--clr-surface-2);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-border);
+  transition: all var(--t-base);
+}
+
+.club-details-meta-item:hover {
+  border-color: var(--clr-accent-light);
+  background: var(--clr-bg-alt);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.club-details-meta-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--clr-accent);
+  flex-shrink: 0;
+}
+
+.club-details-meta-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.club-details-meta-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-text-head);
+}
+
+/* Actions */
+.club-details-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--clr-border);
+}
+
+.club-details-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--clr-primary);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all var(--t-fast);
+}
+
+.club-details-link:hover {
+  color: var(--clr-accent);
+  gap: 0.75rem;
+}
+
+.club-details-join-btn {
+  padding: 1.25rem 3rem;
+  background: var(--grad-primary);
+  color: white;
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--t-base);
+  box-shadow: var(--shadow-md);
+}
+
+.club-details-join-btn:hover:not(:disabled) {
+  background: var(--clr-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+}
+
+.club-details-joined-badge {
+  background: rgba(0, 208, 132, 0.1);
+  color: var(--clr-success);
+  padding: 1rem 1.5rem;
+  border-radius: var(--r-md);
+  font-weight: 700;
+  border: 1px solid rgba(0, 208, 132, 0.2);
+}
+
+@media (max-width: 768px) {
+  .club-details-header {
+    padding: 3rem 2rem;
+  }
+
+  .club-details-title {
+    font-size: 2.5rem;
+  }
+
+  .club-details-body {
+    padding: 2rem;
+  }
+
+  .club-details-page {
+    padding: 1rem;
+  }
+}

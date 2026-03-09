@@ -1,0 +1,383 @@
+/* ===== EVENT DETAILS — Premium Cinematic Theme ===== */
+.event-details-page {
+  min-height: 100vh;
+  background: var(--clr-bg);
+  padding: 2rem;
+}
+
+.event-details-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Card */
+.event-details-card {
+  background: var(--clr-surface);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-border);
+}
+
+.event-details-header {
+  background: var(--grad-primary);
+  color: white;
+  padding: 5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-details-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(0, 208, 132, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(255, 107, 0, 0.1) 0%, transparent 40%);
+}
+
+.event-details-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.event-details-club {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-accent-light);
+  position: relative;
+  z-index: 2;
+}
+
+.event-details-body {
+  padding: 4rem;
+}
+
+.event-details-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--clr-text-muted);
+  margin-bottom: 3.5rem;
+}
+
+/* ── Countdown ── */
+.event-countdown-box {
+  background: var(--clr-bg-alt);
+  padding: 2.5rem;
+  border-radius: var(--r-xl);
+  margin-bottom: 4rem;
+  border: 1px dashed var(--clr-border);
+  text-align: center;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.countdown-header {
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-accent);
+  margin-bottom: 1.5rem;
+}
+
+.countdown-timer-display {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.countdown-item {
+  background: var(--clr-surface);
+  min-width: 90px;
+  padding: 1.25rem 0.5rem;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.countdown-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--clr-accent);
+}
+
+.countdown-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--clr-text-head);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.05em;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Meta grid */
+.event-details-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.event-details-meta-item {
+  background: var(--clr-surface-2);
+  padding: 1.5rem;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--clr-border);
+}
+
+.event-details-meta-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.event-details-meta-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-text-head);
+}
+
+/* Registration form */
+.event-register-form {
+  background: var(--clr-bg);
+  border-radius: var(--r-xl);
+  padding: 3rem;
+  margin-top: 2rem;
+  border: 1px solid var(--clr-border);
+}
+
+.event-register-form h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 850;
+  color: var(--clr-text-head);
+  margin-bottom: 1.5rem;
+}
+
+.event-register-form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-md);
+  font-size: 1rem;
+  background: white;
+  margin-bottom: 1.5rem;
+  outline: none;
+  transition: all var(--t-base);
+}
+
+.event-register-form textarea:focus {
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15);
+}
+
+.event-details-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--clr-border);
+}
+
+.event-register-btn {
+  padding: 1.1rem 3rem;
+  background: var(--grad-primary);
+  color: white;
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--t-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-register-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border);
+}
+
+.event-register-btn--secondary:hover:not(:disabled) {
+  background: var(--clr-bg);
+  color: var(--clr-text-head);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.event-register-form-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.event-register-btn:hover:not(:disabled) {
+  background: var(--clr-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+}
+
+.event-register-simple-btn {
+  padding: 1.25rem 3rem;
+  background: var(--grad-primary);
+  color: white;
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+
+.event-register-simple-btn:hover {
+  background: var(--clr-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+}
+
+/* Calendar Export */
+.calendar-export-section {
+  position: relative;
+  margin-top: 24px;
+}
+
+.calendar-export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--clr-bg-alt);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-head);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-export-btn:hover {
+  background: var(--clr-surface-2);
+  border-color: var(--clr-accent);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.1);
+}
+
+.chevron-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+.calendar-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: animate-fade-up 0.2s ease-out;
+}
+
+.calendar-dropdown button {
+  background: transparent;
+  border: none;
+  color: var(--clr-text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-dropdown button:hover {
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--clr-accent);
+}
+
+.event-details-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--clr-accent);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all var(--t-base);
+}
+
+.event-details-link:hover {
+  color: #ff8c00;
+  transform: translateX(5px);
+}
+
+.event-registered-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 208, 132, 0.1);
+  color: var(--clr-success);
+  border-radius: var(--r-md);
+  font-weight: 800;
+  border: 1px solid rgba(0, 208, 132, 0.2);
+}
+
+@media (max-width: 768px) {
+  .event-details-header {
+    padding: 3rem 2rem;
+  }
+
+  .event-details-title {
+    font-size: 2.5rem;
+  }
+
+  .event-details-body {
+    padding: 2rem;
+  }
+}

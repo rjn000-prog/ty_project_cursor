@@ -1,0 +1,22 @@
+.events-section {
+  padding: 3rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.event-card {
+  background: var(--clr-surface);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.event-desc {
+  margin-top: 0.5rem;
+  color: var(--clr-text-muted);
+}

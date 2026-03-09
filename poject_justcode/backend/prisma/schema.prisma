@@ -1,0 +1,252 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+//////////////////////////////////
+// DEPARTMENT
+//////////////////////////////////
+model Department {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  students Student[]
+  teams    Team[]
+}
+
+//////////////////////////////////
+// STUDENT
+//////////////////////////////////
+model Student {
+  id        Int      @id @default(autoincrement())
+  rollNo    String   @unique
+  name      String
+  email     String   @unique      // 🔑 for login
+  password  String                // 🔑 hashed password
+  dob       DateTime
+  address   String
+  mobile    String
+  year      Int
+
+  departmentId Int
+  department   Department @relation(fields: [departmentId], references: [id])
+
+  registrations       Registration[]
+  feedbacks           Feedback[]
+  clubMembers         ClubMember[]
+  teamMembers         TeamMember[]
+  sportsRegistrations SportsRegistration[]
+}
+
+//////////////////////////////////
+// ADMIN
+//////////////////////////////////
+model Admin {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  role     String // super_admin, sports_admin, club_admin
+}
+
+//////////////////////////////////
+// CLUB
+//////////////////////////////////
+model Club {
+  id            Int    @id @default(autoincrement())
+  name          String
+  type          String
+  description   String
+  presidentName String
+  contactEmail  String
+  capacity      Int
+  location      String
+
+  events      Event[]
+  clubMembers ClubMember[]
+}
+
+//////////////////////////////////
+// EVENT (CLUB / CULTURAL / TECHNICAL)
+//////////////////////////////////
+model Event {
+  id              Int      @id @default(autoincrement())
+  name            String
+  type            String
+  description     String
+  date            DateTime
+  startTime       String
+  endTime         String
+  maxParticipants Int
+
+  clubId Int
+  club   Club @relation(fields: [clubId], references: [id])
+
+  registrations Registration[]
+  feedbacks     Feedback[]
+  organizers    Organizer[]
+}
+
+//////////////////////////////////
+// EVENT REGISTRATION
+//////////////////////////////////
+model Registration {
+  id      Int      @id @default(autoincrement())
+  status  String
+  regDate DateTime @default(now())
+
+  studentId Int
+  eventId   Int
+
+  student Student @relation(fields: [studentId], references: [id])
+  event   Event   @relation(fields: [eventId], references: [id])
+
+  @@unique([studentId, eventId])
+}
+
+//////////////////////////////////
+// FEEDBACK
+//////////////////////////////////
+model Feedback {
+  id       Int
+  rating   Int
+  comments String
+
+  studentId Int
+  eventId   Int
+
+  student Student @relation(fields: [studentId], references: [id])
+  event   Event   @relation(fields: [eventId], references: [id])
+
+  @@id([studentId, eventId])
+}
+
+//////////////////////////////////
+// ORGANIZER
+//////////////////////////////////
+model Organizer {
+  id         Int    @id @default(autoincrement())
+  name       String
+  email      String
+  phone      String
+  role       String
+  department String
+
+  eventId Int
+  event   Event @relation(fields: [eventId], references: [id])
+}
+
+//////////////////////////////////
+// CLUB MEMBER
+//////////////////////////////////
+model ClubMember {
+  id        Int    @id @default(autoincrement())
+  role      String
+
+  studentId Int
+  clubId    Int
+
+  student Student @relation(fields: [studentId], references: [id])
+  club    Club    @relation(fields: [clubId], references: [id])
+
+  @@unique([studentId, clubId])
+}
+
+//////////////////////////////////
+// SPORT
+//////////////////////////////////
+model Sport {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  teams       Team[]
+  tournaments Tournament[]
+  sportsRegistrations SportsRegistration[]
+}
+
+//////////////////////////////////
+// TEAM
+//////////////////////////////////
+model Team {
+  id           Int    @id @default(autoincrement())
+  name         String
+  coachName   String
+
+  departmentId Int
+  sportId      Int
+
+  department Department @relation(fields: [departmentId], references: [id])
+  sport      Sport      @relation(fields: [sportId], references: [id])
+
+  players TeamMember[]
+}
+
+//////////////////////////////////
+// TEAM MEMBER (PLAYER)
+//////////////////////////////////
+model TeamMember {
+  id       Int    @id @default(autoincrement())
+  position String
+
+  studentId Int
+  teamId    Int
+
+  student Student @relation(fields: [studentId], references: [id])
+  team    Team    @relation(fields: [teamId], references: [id])
+
+  @@unique([studentId, teamId])
+}
+
+//////////////////////////////////
+// TOURNAMENT
+//////////////////////////////////
+model Tournament {
+  id        Int      @id @default(autoincrement())
+  name      String
+  level     String // Inter-department / Inter-college / University
+  startDate DateTime
+  endDate   DateTime
+
+  sportId Int
+  sport   Sport @relation(fields: [sportId], references: [id])
+
+  matches Match[]
+}
+
+//////////////////////////////////
+// MATCH
+//////////////////////////////////
+model Match {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  venue    String
+  scoreA   Int
+  scoreB   Int
+
+  teamAId Int
+  teamBId Int
+
+  tournamentId Int
+  tournament   Tournament @relation(fields: [tournamentId], references: [id])
+}
+
+//////////////////////////////////
+// SPORTS REGISTRATION
+//////////////////////////////////
+model SportsRegistration {
+  id     Int    @id @default(autoincrement())
+  status String
+
+  studentId Int
+  sportId   Int
+
+  student Student @relation(fields: [studentId], references: [id])
+  sport   Sport   @relation(fields: [sportId], references: [id])
+
+  @@unique([studentId, sportId])
+}
