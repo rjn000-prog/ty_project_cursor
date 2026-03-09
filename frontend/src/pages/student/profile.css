@@ -136,3 +136,124 @@
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+/* ===== SECTION HEADER WITH EDIT BUTTON ===== */
+.profile-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.profile-section-header .profile-section-title {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  background: var(--clr-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-base);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter var(--t-fast), transform var(--t-fast);
+}
+
+.profile-edit-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+/* ===== EDIT FORM ===== */
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.profile-field-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.9rem;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-base);
+  color: var(--clr-text-head);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  outline: none;
+}
+
+.profile-field-input:focus {
+  border-color: var(--clr-accent-light);
+  box-shadow: 0 0 0 3px rgba(var(--clr-accent-rgb, 99, 102, 241), 0.15);
+}
+
+.profile-field-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.profile-save-error {
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.profile-form-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.profile-save-btn {
+  padding: 0.7rem 2rem;
+  background: var(--clr-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-base);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter var(--t-fast);
+}
+
+.profile-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.profile-save-btn:not(:disabled):hover {
+  filter: brightness(1.15);
+}
+
+.profile-cancel-btn {
+  padding: 0.7rem 2rem;
+  background: transparent;
+  color: var(--clr-text-muted);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-base);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.profile-cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.profile-cancel-btn:not(:disabled):hover {
+  background: var(--clr-bg);
+  color: var(--clr-text-head);
+}
