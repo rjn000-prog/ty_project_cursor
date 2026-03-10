@@ -87,3 +87,19 @@ export const deleteEventForAdmin = async (id) => {
   });
   return res.data;
 };
+
+export const downloadProjectReport = async () => {
+  const res = await axios.get(`${API}/report`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    responseType: "blob",
+  });
+  const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
+  const link = document.createElement("a");
+  link.href = url;
+  const today = new Date().toISOString().slice(0, 10);
+  link.setAttribute("download", `Sports_Sphere_Project_Report_${today}.pdf`);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.URL.revokeObjectURL(url);
+};
