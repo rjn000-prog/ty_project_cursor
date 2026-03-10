@@ -13,6 +13,7 @@ import {
   updateEventAsAdmin,
   deleteEventAsAdmin,
 } from "../controllers/adminEvent.controller.js";
+import { getProjectReport } from "../controllers/admin.controller.js";
 
 const router = express.Router();
 
@@ -35,6 +36,9 @@ router.delete("/clubs/:id", deleteClubAsAdmin);
 router.get("/events", listEventsForAdmin);
 router.put("/events/:id", updateEventAsAdmin);
 router.delete("/events/:id", deleteEventAsAdmin);
+
+// SUPER ADMIN: project report PDF
+router.get("/report", getProjectReport);
 
 export default router;
 

@@ -5,6 +5,7 @@ import {
   createClubAdmin,
   createClubWithAdmin,
   createSportsAdmin,
+  downloadProjectReport,
 } from "../../services/adminService";
 import "./AdminDashboard.css";
 
@@ -15,6 +16,7 @@ export default function AdminDashboard() {
   const [creatingAdmin, setCreatingAdmin] = useState(false);
   const [creatingSportsAdmin, setCreatingSportsAdmin] = useState(false);
   const [creatingClub, setCreatingClub] = useState(false);
+  const [downloadingReport, setDownloadingReport] = useState(false);
 
   const [adminForm, setAdminForm] = useState({
     name: "",
@@ -52,6 +54,17 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
+  };
+
+  const handleDownloadReport = async () => {
+    try {
+      setDownloadingReport(true);
+      await downloadProjectReport();
+    } catch {
+      // ignore
+    } finally {
+      setDownloadingReport(false);
+    }
   };
 
   const handleAdminChange = (field, value) => {
@@ -183,6 +196,18 @@ export default function AdminDashboard() {
             <h1>Admin Dashboard</h1>
             <p>Portal Overview & Management</p>
           </div>
+          <button
+            className="dashboard-nav-logout"
+            onClick={handleDownloadReport}
+            disabled={downloadingReport}
+            style={{ display: "flex", alignItems: "center", gap: 8 }}
+          >
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width={18} height={18}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a1 1 0 001 1h16a1 1 0 001-1v-3" />
+            </svg>
+            {downloadingReport ? "Generating..." : "Download Project Report"}
+          </button>
         </header>
 
         <section className="admin-stats">
